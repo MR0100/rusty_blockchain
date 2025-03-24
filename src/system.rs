@@ -2,12 +2,17 @@ use std::collections::BTreeMap;
 
 use num::{CheckedAdd, CheckedSub, Zero};
 
+/// Create the System Configuration Trait to define the types of the System struct.
+/// SystemConfig trait defines the types of the AccountId, BlockNumber, and Nonce.
 pub trait SystemConfig {
     type AccountId: Ord + Clone;
     type BlockNumber: Zero + CheckedAdd + CheckedSub + PartialOrd + Copy + From<u8>;
     type Nonce: Zero + CheckedAdd + CheckedSub + PartialOrd + Copy + From<u8>;
 }
 
+/// The System struct holds the information about the Nonce and Blocks.
+/// It has a BTreeMap to store the Nonce of the accounts.
+/// The Nonce is a number that is incremented each time a transaction is made by an account.
 #[derive(Debug)]
 pub struct Pallet<T: SystemConfig> {
     block_number: T::BlockNumber,

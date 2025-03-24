@@ -2,6 +2,12 @@ use rsm_en::pallets::{BalanceConfig, Pallet as Balances};
 use rsm_en::system::{Pallet as System, SystemConfig};
 use rsm_en::types::{AccountId, Balance, BlockNumber, Nonce};
 
+/// Runtime
+///
+/// A runtime is a collection of pallets that are used to build a blockchain.
+/// It is the main struct that holds all the pallets.
+/// system pallet holds the information about the Nonce and Blocks, while the Balances pallet contains info about balance.
+
 #[derive(Debug)]
 pub struct Runtime {
     system: System<Runtime>,
@@ -18,7 +24,9 @@ impl BalanceConfig for Runtime {
     type Balance = Balance;
 }
 
+/// implement the methods of Runtime struct.
 impl Runtime {
+    // Create a new empty instance of Runtime
     fn new() -> Self {
         Self {
             system: System::new(),
