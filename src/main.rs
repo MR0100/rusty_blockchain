@@ -1,6 +1,7 @@
 use rsm_en::pallets::{BalanceConfig, Pallet as Balances};
+use rsm_en::support::{self, Dispatch};
 use rsm_en::system::{Pallet as System, SystemConfig};
-use rsm_en::types::{AccountId, Balance, BlockNumber, Nonce};
+use rsm_en::types::{AccountId, Balance, Block, BlockNumber, Nonce};
 
 /// Runtime
 ///
@@ -32,6 +33,11 @@ impl Runtime {
             system: System::new(),
             balances: Balances::new(),
         }
+    }
+
+    fn execute_block(&mut self, block: Block) -> support::DispatchResult {
+        todo!("Implement the execute_block method");
+        Ok(())
     }
 }
 
